@@ -1,6 +1,4 @@
-# Documento sin título
-
-Paso 1. Crear máquina virtual
+# PASO 1. Crear máquina virtual
 
 Con la opción “New” se ha de crear la máquina virtual de la siguiente forma. Almacenar en 
 la carpeta goinfre, la cual es una carpeta especial de almacenamiento temporal y no 
