@@ -74,12 +74,12 @@ Ahora pide crear un usuario sin permisos administrativos para usar en vez del ro
 
 Este paso se realiza para organizar el espacio del disco duro en el servidor. Divide el disco en secciones separadas según su función. En mi caso haré el bonus del subject, por lo que lo haré manual. La siguiente pantalla muestra la descripción de las particiones (que aún no están hechas) y los puntos de montaje. Selecciona el disco generado automáticamente por VirtualBox.
 
+![Imagen 11](images/11.png)
 
 ## Llenar tabla de particiones
 
 El subject nos pide crear las particiones de la siguiente forma:
 
-![Imagen 11](images/11.png)
 
 Empezar por el sda1, añadiendo el correspondiente tamaño indicado en “SIZE”, en este caso aproximadamente 500 MB.
 
