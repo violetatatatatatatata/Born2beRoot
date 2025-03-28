@@ -70,16 +70,25 @@ Ahora pide crear un usuario sin permisos administrativos para usar en vez del ro
 
 ![Imagen 10](images/10.png)
 
+![Imagen 11](images/11.png)
+
 # Paso 3. Configurar las particiones
 
 Este paso se realiza para organizar el espacio del disco duro en el servidor. Divide el disco en secciones separadas según su función. En mi caso haré el bonus del subject, por lo que lo haré manual. La siguiente pantalla muestra la descripción de las particiones (que aún no están hechas) y los puntos de montaje. Selecciona el disco generado automáticamente por VirtualBox.
 
-![Imagen 11](images/11.png)
+![Imagen 12](images/12.png)
+
+![Imagen 13](images/13.png)
 
 ## Llenar tabla de particiones
 
+![Imagen 14](images/14.png)
+
+![Imagen 15](images/15.png)
+
 El subject nos pide crear las particiones de la siguiente forma:
 
+![image](https://github.com/user-attachments/assets/22615922-d29a-4871-ba84-28ec9cc5d177)
 
 Empezar por el sda1, añadiendo el correspondiente tamaño indicado en “SIZE”, en este caso aproximadamente 500 MB.
 
@@ -103,11 +112,13 @@ Empezar por el sda1, añadiendo el correspondiente tamaño indicado en “SIZE�
   - Se usan para almacenar datos o instalar sistemas también
   - Ideal cuando necesitas más de 4 particiones y ya usaste las primarias
 
+![Imagen 16](images/16.png)
+
 En este caso hemos de empezar por la primaria, seleccionando en la siguiente pantalla la opción “beginning” para crearla al principio del espacio disponible en el disco.
 
-![Imagen 12](images/12.png)
-
 Modificaremos el punto de montaje (mount point).
+
+![Imagen 17](images/17.png)
 
 En él se ha de seleccionar /boot como punto de arranque de la partición primaria.
 
@@ -122,9 +133,11 @@ Aunque no es obligatorio, a veces se crea una partición exclusiva para /boot po
 - Garantizar que el gestor de arranque pueda acceder fácilmente a los archivos, especialmente en sistemas con cifrado o configuraciones avanzadas.
 - Aislar esta parte crítica del sistema para mayor seguridad o facilidad de recuperación.
 
+![Imagen 18](images/18.png)
+
 Con el espacio extra se ha de generar la partición que en el subject aparece como “sda5”. Esta será una partición lógica de tamaño “max”. En el punto de montaje se ha de seleccionar “Do not mount it” porque forman parte de una imagen ISO.
 
-![Imagen 13](images/13.png)
+![Imagen 19](images/19.png)
 
 # Paso 4. Configurar volúmenes encriptados
 
@@ -144,47 +157,49 @@ Los volúmenes encriptados son particiones o unidades lógicas cuyos datos está
 
 Tras esta pantalla, se ha de aceptar el mensaje de confirmación y seleccionar “create encrypted volumes”. Este cifrado se generará en sda5. Tras esto, se selecciona “done setting up the partition” y “finish”. Acto seguido, aceptar el mensaje de confirmación.
 
-![Imagen 14](images/14.png)
+![Imagen 20](images/20.png)
 
 Con que nuestra partición está vacía, se puede cancelar este proceso. No hay nada qué cifrar.
 
-![Imagen 15](images/15.png)
+![Imagen 21](images/21.png)
 
 En la siguiente pantalla se debe ingresar otra contraseña y confirmarla.
 
-![Imagen 16](images/16.png)
-
 # Paso 5. Configurar el gestor de volumen lógico.
+
+![Imagen 22](images/22.png)
 
 Tras esta pantalla, aceptar el mensaje de confirmación. Ahora empezamos a crear el volume group.
 
-![Imagen 17](images/17.png)
+![Imagen 23](images/23.png)
 
 Tal como indica el subject, se ha de llamar “LVMGroup” y almacenarlo en sda5_crypt (la partición que acabamos de cifrar).
 
 Según el bonus del subject:
 
-![Imagen 18](images/18.png)
+![image](https://github.com/user-attachments/assets/936db373-5f11-45f5-bed0-7dc60823a5ac)
 
 Es por eso que empezaremos creando el volumen lógico en el grupo que acabamos de crear llamando dicho volumen como “root” con su respectivo SIZE.
 
-![Imagen 19](images/19.png)
+![Imagen 24](images/24.png)
 
 Continuar de la misma forma hasta llegar a var-log. Una vez finalizado al seleccionar “display configuration details” se ha de mostrar de esta forma:
 
-![Imagen 20](images/20.png)
+![Imagen 25](images/25.png)
 
 Al volver a la pantalla anterior y seleccionar “finish” se accede a la pantalla mostrando dichas particiones y el espacio libre. Ahora se configurará el sitio de montaje para cada una de ellas.
 
-![Imagen 21](images/21.png)
+![Imagen 26](images/26.png)
+
+![Imagen 27](images/27.png)
 
 Ext4 sirve para organizar y almacenar archivos en discos duros o particiones en sistemas Linux. Es el sistema de archivos que gestiona cómo se guardan, leen y escriben los datos.
 
-![Imagen 22](images/22.png)
+![Imagen 28](images/28.png)
 
 Como punto de montaje se ha de seleccionar “home” y terminar de configurar esta partición. Proceder del mismo modo con las siguientes. Solo para el var/log tiene que ingresar el punto de montaje manualmente y con “swap” el seleccionar “swap area” en vez de ext4.
 
-![Imagen 23](images/23.png)
+![Imagen 29](images/29.png)
 
 ### ¿Para qué sirve cada partición?
 
@@ -198,4 +213,27 @@ Como punto de montaje se ha de seleccionar “home” y terminar de configurar e
 
 Al finalizar, confirmar el mensaje y empezará la barra de instalación. Rechazar la instalación de paquetes adicionales innecesarios.
 
-![Imagen 24](images/24.png)
+![Imagen 30](images/30.png)
+
+Configurar el manager de paquetes
+
+Luego de la espera, seleccionar el país apropiado y el archive mirror apropiado, que en general suele ser deb.debian.org.
+
+![Imagen 31](images/31.png)
+
+La pantalla del proxy HTTP va vacía
+
+![Imagen 32](images/32.png)
+
+A mí me apareció esta pantalla. No es grave si estás haciendo una instalación de prueba o aprendizaje. Simplemente no tendrás actualizaciones de seguridad al momento de instalar, pero puedes configurarlo después con:
+
+```sh
+sudo apt update
+```
+```sh
+sudo apt upgrade
+```
+
+![Imagen 33](images/33.png)
+
+Tras esto, comenzará a instalarse el software necesario :)
