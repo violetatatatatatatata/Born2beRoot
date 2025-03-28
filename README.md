@@ -219,11 +219,11 @@ Configurar el manager de paquetes
 
 Luego de la espera, seleccionar el país apropiado y el archive mirror apropiado, que en general suele ser deb.debian.org.
 
-![Imagen 31](images/31.png)
+![Screenshot from 2025-03-23 13-21-00](https://github.com/user-attachments/assets/0dede9bc-2554-46ff-99d7-b21cc5d48f78)
 
 La pantalla del proxy HTTP va vacía
 
-![Imagen 32](images/32.png)
+![Screenshot from 2025-03-23 13-21-38](https://github.com/user-attachments/assets/196f1724-62f7-465f-81ba-cec325892d67)
 
 A mí me apareció esta pantalla. No es grave si estás haciendo una instalación de prueba o aprendizaje. Simplemente no tendrás actualizaciones de seguridad al momento de instalar, pero puedes configurarlo después con:
 
@@ -234,6 +234,7 @@ sudo apt update
 sudo apt upgrade
 ```
 
-![Imagen 33](images/33.png)
+![Screenshot from 2025-03-23 13-22-36](https://github.com/user-attachments/assets/70f9a5e9-9cbb-4503-8e68-6c16d06fe079)
+
 
 Tras esto, comenzará a instalarse el software necesario :)
